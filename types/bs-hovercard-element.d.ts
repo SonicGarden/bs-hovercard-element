@@ -16,6 +16,9 @@ export declare class BsHovercardElement extends HTMLElement {
     get tip(): HTMLElement | undefined;
     get hovered(): boolean;
     set hovered(value: boolean);
+    private clearTimer;
+    get timer(): number | undefined;
+    set timer(value: number | undefined);
 }
 declare global {
     interface Window {

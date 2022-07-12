@@ -3,6 +3,7 @@ import Popover from 'bootstrap/js/dist/popover'
 type State = {
   popover: Popover
   hovered: boolean
+  timer?: number | undefined
 }
 
 const CUSTOM_CLASS_NAME = 'bs-hovercard'
@@ -22,16 +23,22 @@ export class BsHovercardElement extends HTMLElement {
   }
 
   show(): void {
-    window.setTimeout(() => {
+    this.clearTimer()
+
+    this.timer = window.setTimeout(() => {
       this.popover?.show()
+      this.clearTimer()
     }, 500)
   }
 
   hide(): void {
-    window.setTimeout(() => {
+    this.clearTimer()
+
+    this.timer = window.setTimeout(() => {
       if (this.hovered) return
 
       this.popover?.hide()
+      this.clearTimer()
     }, 200)
   }
 
@@ -124,6 +131,25 @@ export class BsHovercardElement extends HTMLElement {
     }
 
     state.hovered = value
+    states.set(this, state)
+  }
+
+  private clearTimer(): void {
+    clearTimeout(this.timer)
+    this.timer = undefined
+  }
+
+  get timer(): number | undefined {
+    return states.get(this)?.timer
+  }
+
+  set timer(value) {
+    const state = states.get(this)
+    if (!state) {
+      throw new Error('state is not initialized')
+    }
+
+    state.timer = value
     states.set(this, state)
   }
 }
