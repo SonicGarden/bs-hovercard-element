@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width user-scalable=no initial-scale=1.0 minimum-scale=1.0 maximum-scale=1.0">
+    <title>bs-hovercard-element demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    <main class="container py-4 vstack gap-4">
+      <h1>&lt;bs-hovercard&gt; element</h1>
+      <div>
+        <bs-hovercard>
+          <a href="#">SonicGarden</a>
+          <template>
+            <div class="hstack align-items-start gap-2">
+              <img src="https://avatars.githubusercontent.com/u/762682?s=200&v=4" class="img-thumbnail" style="width: 32px; height: 32px;">
+              <div class="vstack gap-2">
+                <div class="hstack gap-2">
+                  <span class="font-weight-bold">SonicGarden.inc</span>
+                  <a href="https://github.com/SonicGarden" class="text-muted text-decoration-none">@SonicGarden</a>
+                </div>
+                <div class="text-muted">
+                  <span>1,960</span>
+                  <span>Followers</span>
+                </div>
+              </div>
+            </div>
+          </template>
+        </bs-hovercard>
+      </div>
+    </main>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@sonicgarden/bs-hovercard-element'
+      // import './src/bs-hovercard-element.ts'
+    </script>
+  </body>
+</html>
