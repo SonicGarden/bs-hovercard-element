@@ -6,6 +6,10 @@ type State = {
   timer?: number | undefined
 }
 
+const Placements = ['auto', 'top', 'bottom', 'left', 'right'] as const
+
+type Placement = typeof Placements[number]
+
 const CUSTOM_CLASS_NAME = 'bs-hovercard'
 const GLOBAL_STYLE_ID = 'bs-hovercard-style'
 
@@ -55,7 +59,8 @@ export class BsHovercardElement extends HTMLElement {
       html: true,
       sanitize: false,
       trigger: 'manual',
-      customClass: CUSTOM_CLASS_NAME
+      customClass: CUSTOM_CLASS_NAME,
+      placement: this.placement
     })
     states.set(this, {popover, hovered: false})
 
@@ -151,6 +156,15 @@ export class BsHovercardElement extends HTMLElement {
 
     state.timer = value
     states.set(this, state)
+  }
+
+  get placement(): Placement {
+    const placement = this.getAttribute('placement')
+    return placement && (Placements as readonly string[]).includes(placement) ? (placement as Placement) : 'auto'
+  }
+
+  set placement(value) {
+    this.setAttribute('placement', value)
   }
 }
 

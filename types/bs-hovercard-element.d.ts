@@ -1,4 +1,6 @@
 import Popover from 'bootstrap/js/dist/popover';
+declare const Placements: readonly ["auto", "top", "bottom", "left", "right"];
+declare type Placement = typeof Placements[number];
 export declare class BsHovercardElement extends HTMLElement {
     connectedCallback(): void;
     disconnectedCallback(): void;
@@ -19,9 +21,12 @@ export declare class BsHovercardElement extends HTMLElement {
     private clearTimer;
     get timer(): number | undefined;
     set timer(value: number | undefined);
+    get placement(): Placement;
+    set placement(value: Placement);
 }
 declare global {
     interface Window {
         BsHovercardElement: typeof BsHovercardElement;
     }
 }
+export {};
