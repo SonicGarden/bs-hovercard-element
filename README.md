@@ -15,7 +15,7 @@ import '@sonicgarden/bs-hovercard-element'
 ```html
 <bs-hovercard>
   <a href="#">SonicGarden</a>
-  <template>
+  <template slot="content">
     <div class="hstack align-items-start gap-2">
       <img src="https://avatars.githubusercontent.com/u/762682?s=200&v=4" class="img-thumbnail" style="width: 32px; height: 32px;">
       <div class="vstack gap-2">

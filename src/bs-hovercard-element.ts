@@ -47,7 +47,7 @@ export class BsHovercardElement extends HTMLElement {
   }
 
   private init() {
-    const template = this.querySelector('template')
+    const template = this.querySelector('[slot="content"]')
     if (!template) {
       throw new Error('template is not found')
     }
