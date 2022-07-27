@@ -29,6 +29,10 @@ export class BsHovercardElement extends HTMLElement {
   show(): void {
     this.clearTimer()
 
+    // NOTE: Calling popover.show() when it has already been shown will break the position.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if ((this.popover as any)._isShown()) return
+
     this.timer = window.setTimeout(() => {
       this.popover?.show()
       this.clearTimer()
