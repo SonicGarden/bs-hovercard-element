@@ -5,10 +5,10 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/bs-hovercard-element.ts',
-      formats: ['es']
+      formats: ['es'],
     },
     rollupOptions: {
-      external: /^bootstrap/
-    }
-  }
+      external: /^bootstrap/,
+    },
+  },
 })
