@@ -31,9 +31,10 @@
     "vite": "^3.0.3"
   },
   "volta": {
-    "node": "16.16.0"
+    "node": "20.13.1"
   },
   "peerDependencies": {
     "bootstrap": "^5.2.0"
-  }
+  },
+  "packageManager": "pnpm@9.1.0"
 }
