@@ -1,6 +1,6 @@
 {
   "name": "@sonicgarden/bs-hovercard-element",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "module": "dist/bs-hovercard-element.js",
   "type": "module",
   "types": "types/bs-hovercard-element.d.ts",
