@@ -1,6 +1,6 @@
 import Popover from 'bootstrap/js/dist/popover';
 declare const Placements: readonly ["auto", "top", "bottom", "left", "right"];
-declare type Placement = typeof Placements[number];
+type Placement = (typeof Placements)[number];
 export declare class BsHovercardElement extends HTMLElement {
     connectedCallback(): void;
     disconnectedCallback(): void;
@@ -14,7 +14,7 @@ export declare class BsHovercardElement extends HTMLElement {
     private enter;
     private leave;
     private injectStyle;
-    get popover(): Popover | undefined;
+    get bsPopover(): Popover | undefined;
     get tip(): HTMLElement | undefined;
     get hovered(): boolean;
     set hovered(value: boolean);

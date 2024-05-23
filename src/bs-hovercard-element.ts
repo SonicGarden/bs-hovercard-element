@@ -8,7 +8,7 @@ type State = {
 
 const Placements = ['auto', 'top', 'bottom', 'left', 'right'] as const
 
-type Placement = typeof Placements[number]
+type Placement = (typeof Placements)[number]
 
 const CUSTOM_CLASS_NAME = 'bs-hovercard'
 const GLOBAL_STYLE_ID = 'bs-hovercard-style'
@@ -22,7 +22,7 @@ export class BsHovercardElement extends HTMLElement {
 
   disconnectedCallback(): void {
     this.removeListeners()
-    this.popover?.dispose()
+    this.bsPopover?.dispose()
     states.delete(this)
   }
 
@@ -31,10 +31,10 @@ export class BsHovercardElement extends HTMLElement {
 
     // NOTE: Calling popover.show() when it has already been shown will break the position.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if ((this.popover as any)._isShown()) return
+    if ((this.bsPopover as any)._isShown()) return
 
     this.timer = window.setTimeout(() => {
-      this.popover?.show()
+      this.bsPopover?.show()
       this.clearTimer()
     }, 500)
   }
@@ -45,7 +45,7 @@ export class BsHovercardElement extends HTMLElement {
     this.timer = window.setTimeout(() => {
       if (this.hovered) return
 
-      this.popover?.hide()
+      this.bsPopover?.hide()
       this.clearTimer()
     }, 200)
   }
@@ -64,7 +64,7 @@ export class BsHovercardElement extends HTMLElement {
       sanitize: false,
       trigger: 'manual',
       customClass: CUSTOM_CLASS_NAME,
-      placement: this.placement
+      placement: this.placement,
     })
     states.set(this, {popover, hovered: false})
 
@@ -119,14 +119,14 @@ export class BsHovercardElement extends HTMLElement {
     this.append(style)
   }
 
-  get popover(): Popover | undefined {
+  get bsPopover(): Popover | undefined {
     return states.get(this)?.popover
   }
 
   get tip(): HTMLElement | undefined {
     // NOTE: tip is private property
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (this.popover as any)?.tip as HTMLElement | undefined
+    return (this.bsPopover as any)?.tip as HTMLElement | undefined
   }
 
   get hovered(): boolean {
